@@ -10,8 +10,8 @@ If you have a raw regular expression in a string (perhaps read from a configurat
 
 ## The problem
 
-In many cases, converting a regular expression into a pattern argument is as simple as wrapping the regex with forward slashes. This would convert, for example, a regular-expression string '[a-z]+' to '/[a-z]+/', a string appropriate for use as a preg pattern argument.
-However, the conversion becomes more complex if the regular expression actually contains the delimiter in which you choose to wrap it. For example, if the regex string is '^http://([^/:]+)', simply wrapping it in forward slashes yields '/^http://([^/:]+)/', which results in an "Unknown modifier /" error when used as a pattern modifier.
+In many cases, converting a regular expression into a pattern argument is as simple as wrapping the regex with forward slashes. This would convert, for example, a regular-expression string `[a-z]+` to `/[a-z]+/`, a string appropriate for use as a preg pattern argument.
+However, the conversion becomes more complex if the regular expression actually contains the delimiter in which you choose to wrap it. For example, if the regex string is `^http://([^/:]+)`, simply wrapping it in forward slashes yields `/^http://([^/:]+)/`, which results in an `Unknown modifier /` error when used as a pattern modifier.
 As described in the sidebar on page 448, the odd error message is generated because the first and second forward slashes in the string are taken as the delimiters, and whatever follows (in this case, the third forward slash in the string) is taken as the start of the pattern-modifier list.
 
 ## The solution
