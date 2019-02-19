@@ -167,4 +167,25 @@ class PCRE
         return self::patternError(self::regexToPattern($regex));
     }
 
+    /**
+     * Выполняет поиск и замену по регулярному выражению с использованием строк или функций обратного вызова
+     *
+     * @param array           $replacePairs     Ассоциативный массив, связывающий шаблоны регулярного выражения (ключи)
+     *                                          и функции обратного вызова (значения).
+     * @param string|string[] $subject          Строка или массив строк для поиска и замены.
+     *
+     * @return null|string|string[]
+     * @throws \TypeError
+     */
+    public static function pregReplacePairs(array $replacePairs, $subject) {
+        foreach ($replacePairs as $pattern => $replacement) {
+            if (! is_string($pattern)) throw new \TypeError();
+            if (is_string($replacement))   	   $subject = preg_replace($pattern, $replacement, $subject);
+            elseif (is_callable($replacement)) $subject = preg_replace_callback($pattern, $replacement, $subject);
+            else throw new \TypeError();
+        }
+        return $subject;
+    }
+
+
 }
