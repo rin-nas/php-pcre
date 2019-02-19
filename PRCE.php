@@ -177,7 +177,7 @@ class PCRE
      * @return null|string|string[]
      * @throws \TypeError
      */
-    public static function pregReplacePairs(array $replacePairs, $subject) {
+    public static function replacePairs(array $replacePairs, $subject) {
         foreach ($replacePairs as $pattern => $replacement) {
             if (! is_string($pattern)) throw new \TypeError();
             if (is_string($replacement))   	   $subject = preg_replace($pattern, $replacement, $subject);
