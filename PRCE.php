@@ -99,6 +99,7 @@ class PCRE
 			'\\' => '\\\\',
 			'-'  => '\-',
 			']'  => '\]',
+			'^'  => '\^',
 		);
 		if (is_string($delimiter)) {
             $quoteTable[$delimiter] = '\\' . $delimiter;
